@@ -1,0 +1,10 @@
+#!/usr/bin/make -f
+# -*- makefile -*-
+
+export GOVER := $(shell debian/helpers/getver.pl)
+
+%:
+	dh $@
+
+override_dh_gencontrol:
+	dh_gencontrol -- -Vgolang:GOVER=$(GOVER)
